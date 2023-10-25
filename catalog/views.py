@@ -26,6 +26,12 @@ class AssortmentListView(ListView):
     extra_context = {
         'title': 'Все товары'
     }
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        active_versions = Version.objects.filter(is_active=True)
+        for i in queryset:
+            i.active_version = active_versions.filter(product=i).last()
+        return queryset
 
 
 class ProductListView(ListView):
