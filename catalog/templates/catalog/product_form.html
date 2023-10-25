@@ -1,0 +1,43 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<form method="post" , class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                {{ object.name }}
+            </div>
+            <div class="card-body">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">
+                    {% if object %}
+                    Сохранить
+                    {% else %}
+                    Создать
+                    {% endif %}
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card"></div>
+            <div class="card-header">
+                Версия продукта
+            </div>
+            <div class="card-body">
+                {{ formset.management_form }}
+                {% for form in formset.forms %}
+                    {{ form.as_p }}
+                    {% if not forloop.last %}
+                        <hr>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    </div>
+
+</form>
+
+{% endblock %}

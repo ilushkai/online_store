@@ -1,0 +1,78 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "ноутбуки",
+      "description": ""
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "телефоны",
+      "description": ""
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "планшеты",
+      "description": ""
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "ноутбук acer",
+      "description": "acer",
+      "image": "",
+      "category": 1,
+      "price": 60000,
+      "creation_date": "2023-10-01T11:29:21.867Z",
+      "update_date": "2023-10-01T11:29:21.867Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "телефон xiaomi",
+      "description": "xiaomi",
+      "image": "",
+      "category": 2,
+      "price": 20000,
+      "creation_date": "2023-10-01T11:29:21.867Z",
+      "update_date": "2023-10-01T11:29:21.867Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "планшет xiaomi",
+      "description": "xiaomi",
+      "image": "",
+      "category": 3,
+      "price": 30000,
+      "creation_date": "2023-10-01T11:29:21.867Z",
+      "update_date": "2023-10-01T11:29:21.867Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "телефон oppo",
+      "description": "oppo",
+      "image": "",
+      "category": 2,
+      "price": 35000,
+      "creation_date": "2023-10-01T11:29:21.867Z",
+      "update_date": "2023-10-01T11:29:21.867Z"
+    }
+  }
+]

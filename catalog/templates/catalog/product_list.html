@@ -1,0 +1,12 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="row">
+    {% for object in object_list %}
+    {% include 'catalog/includes/inc_products.html' %}
+    {% endfor %}
+</div>
+<div class="col-12 mt-5">
+    <a href="{% url 'catalog:create' %}" class="btn btn-outline-primary">Добавить продукт</a>
+</div>
+{% endblock %}
