@@ -26,6 +26,7 @@ class AssortmentListView(ListView):
     extra_context = {
         'title': 'Все товары'
     }
+
     def get_queryset(self):
         queryset = super().get_queryset()
         active_versions = Version.objects.filter(is_active=True)
@@ -56,19 +57,7 @@ class ProductListView(ListView):
 
 
 ##############
-
-class ProductCreateView(CreateView):
-    model = Product
-    form_class = ProductForm
-
-    def get_success_url(self):
-        return reverse('catalog:products', args=[self.object.category.pk])
-
-
-class ProductUpdateView(UpdateView):
-    model = Product
-    form_class = ProductForm
-
+class VersionPurposeMixin:
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
         VersionFormset = inlineformset_factory(Product, Version, form=VersionForm, extra=1)
@@ -88,6 +77,19 @@ class ProductUpdateView(UpdateView):
             formset.instance = self.object
             formset.save()
         return super().form_valid(form)
+
+
+class ProductCreateView(VersionPurposeMixin, CreateView):
+    model = Product
+    form_class = ProductForm
+
+    def get_success_url(self):
+        return reverse('catalog:products', args=[self.object.category.pk])
+
+
+class ProductUpdateView(VersionPurposeMixin, UpdateView):
+    model = Product
+    form_class = ProductForm
 
     def get_success_url(self):
         return reverse('catalog:products', args=[self.object.category.pk])

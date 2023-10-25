@@ -12,13 +12,13 @@ class BlogForm(forms.ModelForm):
 
     def clean_title(self):
         cleaned_data = self.cleaned_data['title']
-        if cleaned_data in forbidden_words:
+        if cleaned_data.lower() in forbidden_words:
             raise forms.ValidationError('В названии есть запрещенные слова')
         return cleaned_data
 
     def clean_content(self):
         cleaned_data = self.cleaned_data['content']
-        if cleaned_data in forbidden_words:
+        if cleaned_data.lower() in forbidden_words:
             raise forms.ValidationError('В описании есть запрещенные слова')
         return cleaned_data
 
