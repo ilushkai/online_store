@@ -1,0 +1,54 @@
+[
+  {
+    "model": "blog.material",
+    "pk": 1,
+    "fields": {
+      "title": "test_1",
+      "slug": "test1",
+      "content": "test_1test_1test_1test_1",
+      "image": "",
+      "creation_date": "2023-10-22T22:58:22.452Z",
+      "is_published": true,
+      "view_count": 7
+    }
+  },
+  {
+    "model": "blog.material",
+    "pk": 3,
+    "fields": {
+      "title": "test_disactive",
+      "slug": "testdisactive",
+      "content": "test_disactivetest_disactive",
+      "image": "",
+      "creation_date": "2023-10-22T23:06:36.273Z",
+      "is_published": false,
+      "view_count": 0
+    }
+  },
+  {
+    "model": "blog.material",
+    "pk": 4,
+    "fields": {
+      "title": "test3",
+      "slug": "test3",
+      "content": "test3test3test3test3",
+      "image": "",
+      "creation_date": "2023-10-23T08:23:35.679Z",
+      "is_published": true,
+      "view_count": 1
+    }
+  },
+  {
+    "model": "blog.material",
+    "pk": 6,
+    "fields": {
+      "title": "232r2332",
+      "slug": "232r2332",
+      "content": "322322",
+      "image": "",
+      "creation_date": "2023-10-24T12:43:39.230Z",
+      "is_published": true,
+      "view_count": 7
+    }
+  }
+]

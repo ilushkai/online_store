@@ -29,11 +29,11 @@
     "fields": {
       "name": "ноутбук acer",
       "description": "acer",
-      "image": "",
+      "image": "catalog/acer_zujJtXZ.jpg",
       "category": 1,
-      "price": 60000,
-      "creation_date": "2023-10-01T11:29:21.867Z",
-      "update_date": "2023-10-01T11:29:21.867Z"
+      "price": 69000,
+      "creation_date": "2023-10-22T22:54:51.385Z",
+      "update_date": "2023-10-25T01:53:55.295Z"
     }
   },
   {
@@ -42,24 +42,11 @@
     "fields": {
       "name": "телефон xiaomi",
       "description": "xiaomi",
-      "image": "",
+      "image": "catalog/mi_9Z8RERx.jpeg",
       "category": 2,
       "price": 20000,
-      "creation_date": "2023-10-01T11:29:21.867Z",
-      "update_date": "2023-10-01T11:29:21.867Z"
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 3,
-    "fields": {
-      "name": "планшет xiaomi",
-      "description": "xiaomi",
-      "image": "",
-      "category": 3,
-      "price": 30000,
-      "creation_date": "2023-10-01T11:29:21.867Z",
-      "update_date": "2023-10-01T11:29:21.867Z"
+      "creation_date": "2023-10-22T22:54:51.385Z",
+      "update_date": "2023-10-25T02:37:13.570Z"
     }
   },
   {
@@ -68,11 +55,110 @@
     "fields": {
       "name": "телефон oppo",
       "description": "oppo",
-      "image": "",
+      "image": "catalog/oppo_8otKkoy.jpeg",
       "category": 2,
       "price": 35000,
-      "creation_date": "2023-10-01T11:29:21.867Z",
-      "update_date": "2023-10-01T11:29:21.867Z"
+      "creation_date": "2023-10-22T22:54:51.385Z",
+      "update_date": "2023-10-25T02:39:32.796Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 21,
+    "fields": {
+      "name": "Планшет Xiaomi",
+      "description": "Xiaomi",
+      "image": "catalog/планшет_mi_umGUWyW_UvyxgpY.jpeg",
+      "category": 3,
+      "price": 50000,
+      "creation_date": "2023-10-24T13:05:11.433Z",
+      "update_date": "2023-10-25T01:54:14.906Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 23,
+    "fields": {
+      "name": "test1",
+      "description": "test1test1test1test1test1",
+      "image": "",
+      "category": 2,
+      "price": 101000,
+      "creation_date": "2023-10-25T01:14:27.967Z",
+      "update_date": "2023-10-25T22:55:42.583Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 24,
+    "fields": {
+      "name": "казино",
+      "description": "бесплатно",
+      "image": "",
+      "category": 1,
+      "price": 1233,
+      "creation_date": "2023-10-25T22:47:51.689Z",
+      "update_date": "2023-10-25T22:47:51.689Z"
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 1,
+    "fields": {
+      "product": 23,
+      "version_number": 1.0,
+      "version_name": "testTEST",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 3,
+    "fields": {
+      "product": 23,
+      "version_number": 2.0,
+      "version_name": "TEST2.0",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 4,
+    "fields": {
+      "product": 4,
+      "version_number": 1.0,
+      "version_name": "zet3000",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 5,
+    "fields": {
+      "product": 1,
+      "version_number": 1.0,
+      "version_name": "SuperGamers",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 6,
+    "fields": {
+      "product": 21,
+      "version_number": 1.0,
+      "version_name": "TT",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 7,
+    "fields": {
+      "product": 2,
+      "version_number": 1.0,
+      "version_name": "Mega",
+      "is_active": true
     }
   }
 ]

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
@@ -8,7 +9,7 @@ from blog.models import Material
 
 
 
-class MaterialCreateView(CreateView):
+class MaterialCreateView(LoginRequiredMixin, CreateView):
     model = Material
     form_class = BlogForm
     success_url = reverse_lazy('blog:list')
@@ -20,7 +21,7 @@ class MaterialCreateView(CreateView):
             new_mat.save()
         return super().form_valid(form)
 
-class MaterialUpdateView(UpdateView):
+class MaterialUpdateView(LoginRequiredMixin, UpdateView):
     model = Material
     form_class = BlogForm
     success_url = reverse_lazy('blog:list')
@@ -35,7 +36,7 @@ class MaterialUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('blog:view', args=[self.kwargs.get('pk')])
 
-class MaterialListView(ListView):
+class MaterialListView(LoginRequiredMixin, ListView):
     model = Material
 
     def get_queryset(self, *args, **kwargs):
@@ -44,7 +45,7 @@ class MaterialListView(ListView):
         return queryset
 
 
-class MaterialDetailView(DetailView):
+class MaterialDetailView(LoginRequiredMixin, DetailView):
     model = Material
 
     def get_object(self, queryset=None):
@@ -55,7 +56,7 @@ class MaterialDetailView(DetailView):
 
 
 
-class MaterialDeleteView(DeleteView):
+class MaterialDeleteView(LoginRequiredMixin, DeleteView):
     model = Material
     success_url = reverse_lazy('blog:list')
 

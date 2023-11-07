@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
@@ -9,7 +10,7 @@ from catalog.forms import ProductForm, VersionForm
 from catalog.models import Category, Product, Version
 
 
-class HomeView(TemplateView):
+class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'catalog/home.html'
     extra_context = {
         'title': 'Каталог'
@@ -21,7 +22,7 @@ class HomeView(TemplateView):
         return context_data
 
 
-class AssortmentListView(ListView):
+class AssortmentListView(LoginRequiredMixin, ListView):
     model = Product
     extra_context = {
         'title': 'Все товары'
@@ -35,7 +36,7 @@ class AssortmentListView(ListView):
         return queryset
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
 
     def get_queryset(self):
@@ -79,7 +80,7 @@ class VersionPurposeMixin:
         return super().form_valid(form)
 
 
-class ProductCreateView(VersionPurposeMixin, CreateView):
+class ProductCreateView(LoginRequiredMixin, VersionPurposeMixin, CreateView):
     model = Product
     form_class = ProductForm
 
@@ -87,7 +88,7 @@ class ProductCreateView(VersionPurposeMixin, CreateView):
         return reverse('catalog:products', args=[self.object.category.pk])
 
 
-class ProductUpdateView(VersionPurposeMixin, UpdateView):
+class ProductUpdateView(LoginRequiredMixin, VersionPurposeMixin, UpdateView):
     model = Product
     form_class = ProductForm
 
@@ -95,18 +96,18 @@ class ProductUpdateView(VersionPurposeMixin, UpdateView):
         return reverse('catalog:products', args=[self.object.category.pk])
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
 
     def get_success_url(self):
         return reverse('catalog:products', args=[self.object.category.pk])
 
 
-class ContactView(TemplateView):
+class ContactView(LoginRequiredMixin, TemplateView):
     template_name = 'catalog/contact.html'
     extra_context = {
         'title': 'Контакты'
