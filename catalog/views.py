@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
@@ -80,31 +80,37 @@ class VersionPurposeMixin:
         return super().form_valid(form)
 
 
-class ProductCreateView(LoginRequiredMixin, VersionPurposeMixin, CreateView):
+class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, VersionPurposeMixin, CreateView):
     model = Product
     form_class = ProductForm
+    permission_required = 'catalog.add_product'
 
     def get_success_url(self):
         return reverse('catalog:products', args=[self.object.category.pk])
 
 
-class ProductUpdateView(LoginRequiredMixin, VersionPurposeMixin, UpdateView):
+class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, VersionPurposeMixin, UpdateView):
     model = Product
     form_class = ProductForm
+    permission_required = 'catalog.change_product'
 
     def get_success_url(self):
         return reverse('catalog:products', args=[self.object.category.pk])
 
 
-class ProductDetailView(LoginRequiredMixin, DetailView):
+class ProductDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Product
+    permission_required = 'catalog.view_product'
 
 
-class ProductDeleteView(LoginRequiredMixin, DeleteView):
+class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Product
 
     def get_success_url(self):
         return reverse('catalog:products', args=[self.object.category.pk])
+
+    def test_func(self):
+        return self.request.user.is_superuser
 
 
 class ContactView(LoginRequiredMixin, TemplateView):

@@ -14,12 +14,18 @@
         </div>
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
+
                 <a href="{% url 'catalog:view' object.pk %}" type="button"
                    class="btn btn-sm btn-outline-secondary">View</a>
+
+                {% if perms.catalog.change_product %}
                 <a href="{% url 'catalog:edit' object.pk %}" type="button"
                    class="btn btn-sm btn-outline-secondary">Edit</a>
+                {% endif %}
+                {% if user.is_superuser %}
                 <a href="{% url 'catalog:delete' object.pk %}" type="button"
                    class="btn btn-sm btn-outline-danger">Delete</a>
+                {% endif %}
             </div>
         </div>
     </div>

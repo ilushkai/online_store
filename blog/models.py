@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 NULLABLE = {'null': True, 'blank': True}
@@ -12,6 +13,7 @@ class Material(models.Model):
     is_published = models.BooleanField(default=True, verbose_name='опубликовано')
     view_count = models.IntegerField(default=0, verbose_name='Количество просмотров')
 
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name='Автор')
     def __str__(self):
         return self.title
 

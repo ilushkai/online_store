@@ -1,30 +1,34 @@
 {% extends 'catalog/base.html' %}
 
 {% block content %}
+{% if perms.blog.add_material %}
 <div class="col-12 mb-5">
     <a href="{% url 'blog:create' %}" class="btn btn-outline-primary">Добавить статью</a>
 </div>
+{% endif %}
 <div class="row">
     {% for object in object_list %}
     <div class="col-md-4">
         <div class="card mb-4 box-shadow">
             <div class="card-body">
                 <p class="card-text">
-                    {{ object|title }}
+                    {{ object|title }} - {{ object.author|default:"Без автора" }}
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+
                         <a href="{% url 'blog:view' object.pk %}" type="button"
                            class="btn btn-sm btn-outline-secondary">View</a>
+
                         <a href="{% url 'blog:edit' object.pk %}" type="button"
                            class="btn btn-sm btn-outline-secondary">Edit</a>
+
                         <a href="{% url 'blog:delete' object.pk %}" type="button"
                            class="btn btn-sm btn-outline-danger">Delete</a>
+
                     </div>
-                    {% if object.is_published %}
+                    {% if perms.blog.delete_material %}
                         <a class="btn btn-outline-secondary" href="{% url 'blog:toggle_activity' object.pk %}">Не показывать</a>
-                    {% else %}
-                        <a class="btn btn-outline-warning" href="{% url 'blog:toggle_activity' object.pk %}">Активировать</a>
                     {% endif %}
                 </div>
             </div>

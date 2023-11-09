@@ -7,6 +7,8 @@
     {% endfor %}
 </div>
 <div class="col-12 mt-5">
+    {% if perms.catalog.add_product %}
     <a href="{% url 'catalog:create' %}" class="btn btn-outline-primary">Добавить продукт</a>
+    {% endif %}
 </div>
 {% endblock %}

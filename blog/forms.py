@@ -8,7 +8,7 @@ class BlogForm(forms.ModelForm):
 
     class Meta:
         model = Material
-        fields = ('title', 'content', 'image')
+        fields = ('title', 'content', 'image', 'author')
 
     def clean_title(self):
         cleaned_data = self.cleaned_data['title']
