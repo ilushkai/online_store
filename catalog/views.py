@@ -8,13 +8,16 @@ from pytils.translit import slugify
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Category, Product, Version
+from catalog.services import get_assortment_cache
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'catalog/home.html'
     extra_context = {
-        'title': 'Каталог'
+        # 'object_list': get_category_cache(),
+        'title': 'Каталог',
     }
+
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -22,10 +25,12 @@ class HomeView(LoginRequiredMixin, TemplateView):
         return context_data
 
 
+
 class AssortmentListView(LoginRequiredMixin, ListView):
     model = Product
     extra_context = {
-        'title': 'Все товары'
+        'title': 'Все товары',
+        'assortment_list': get_assortment_cache(),
     }
 
     def get_queryset(self):
